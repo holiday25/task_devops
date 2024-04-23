@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 5000  # Update to port 5000 for your application
+          volumeMounts:
+            - name: data-volume
+              mountPath: {{ .Values.persistence.mountPath }}
+      volumes:
+        - name: data-volume
+        {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: task-pv-claim
+        {{- else }}
+          emptyDir: { }
+        {{- end -}}
+
