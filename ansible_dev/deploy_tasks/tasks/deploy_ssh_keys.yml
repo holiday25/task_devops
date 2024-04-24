@@ -1,0 +1,8 @@
+---
+# deploy_users/tasks/deploy_ssh_keys.yml
+
+- name: Deploy SSH keys
+  authorized_key:
+    user: "{{ item.user }}"
+    key: "{{ item.key }}"
+  loop: "{{ ssh_keys }}"

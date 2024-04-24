@@ -1,0 +1,7 @@
+---
+- name: Deploy users, group, and SSH keys
+  hosts: all
+  become: yes
+
+  roles:
+    - deploy_tasks

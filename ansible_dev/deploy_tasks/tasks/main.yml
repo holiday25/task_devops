@@ -1,0 +1,12 @@
+---
+# deploy_users/tasks/main.yml
+
+- name: Create group
+  include_tasks: create_group.yml
+
+- name: Create users
+  include_tasks: create_users.yml
+
+- name: Deploy SSH keys
+  include_tasks: deploy_ssh_keys.yml
+

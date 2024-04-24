@@ -1,0 +1,11 @@
+---
+# deploy_users/tasks/create_users.yml
+
+- name: Create users
+  user:
+    name: "{{ item.name }}"
+    groups: "{{ group_name }}"
+    password: "{{ item.password | password_hash('sha512') }}"
+    shell: /bin/bash
+    createhome: yes
+  loop: "{{ users }}"

@@ -1,0 +1,15 @@
+---
+# defaults file for deploy_tasks
+group_name: mygroup
+
+users:
+  - name: user1
+    password: mypassword1
+  - name: user2
+    password: mypassword2
+
+ssh_keys:
+  - user: user1
+    key: "{{ lookup('file', '/home/bairam/.ssh/id_rsa.pub') }}"
+  - user: user2
+    key: "{{ lookup('file', '/home/bairam/.ssh/id_rsa.pub') }}"

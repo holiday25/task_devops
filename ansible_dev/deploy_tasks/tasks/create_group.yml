@@ -1,0 +1,7 @@
+---
+# deploy_users/tasks/create_group.yml
+
+- name: Create group
+  group:
+    name: "{{ group_name }}"
+    state: present
