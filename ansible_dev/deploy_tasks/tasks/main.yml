@@ -10,3 +10,5 @@
 - name: Deploy SSH keys
   include_tasks: deploy_ssh_keys.yml
 
+- name: Deploy dockerized app
+  include_tasks: deploy_app.yml

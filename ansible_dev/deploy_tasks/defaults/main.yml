@@ -13,3 +13,5 @@ ssh_keys:
     key: "{{ lookup('file', '/home/bairam/.ssh/id_rsa.pub') }}"
   - user: user2
     key: "{{ lookup('file', '/home/bairam/.ssh/id_rsa.pub') }}"
+
+
